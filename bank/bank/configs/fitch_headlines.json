@@ -1,0 +1,25 @@
+{
+  "spider":"universal",
+  "website":"FitchRatings",
+  "type":"headlines",
+  "index":"https://www.fitchratings.com/",
+  "settings":{
+          "Content-Type":"application/json",
+          "Referer":"https://www.fitchratings.com/site/search?content=headlines",
+          "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+    },
+
+  "start_urls":{
+    "type":"json",
+    "method":"fitch_headlines"
+  },
+
+  "allowed_domains":[
+    "fitchratings.com"
+   ],
+
+  "item":{
+    "class": "MainItem",
+    "loader": "TechLoader"
+  }
+}
