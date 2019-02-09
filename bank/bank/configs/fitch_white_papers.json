@@ -1,17 +1,16 @@
 {
   "spider":"universal",
   "website":"FitchRatings",
-  "type":"headlines",
+  "type":"white_papers",
   "index":"https://www.fitchratings.com/",
   "DEFAULT_REQUEST_HEADERS":{
-          "Content-Type":"application/json",
           "Referer":"https://www.fitchratings.com/site/search?content=headlines",
           "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
     },
 
   "start_urls":{
-    "type":"json",
-    "method":"fitch_headlines"
+    "type":"static",
+    "value":["https://www.fitchsolutions.com/white-papers"]
   },
 
   "allowed_domains":[
@@ -24,29 +23,36 @@
     "attrs":{
        "title":[
          {
-           "method":"direct",
-           "name":"title"
+           "method":"xpath",
+           "args":[
+             "//div[@class='content']/article[{}]/h2//text()"
+           ]
          }
        ],
       "link":[
         {
-          "method":"extra",
-          "args":"https://www.fitchratings.com",
-          "name":"link"
+          "method":"xpath",
+          "args":[
+            "//div[@class='content']/article[{}]/a/@href"
+           ]
         }
       ],
 
       "date":[
         {
-          "method":"direct",
-          "name":"date"
+          "method":"xpath",
+          "args":[
+            "//div[@class='content']/article[{}]/p/text()[last()]"
+          ]
         }
       ],
 
       "text":[
         {
-          "method":"direct",
-          "name":"text"
+          "method":"xpath",
+          "args":[
+            "//div[@class='content']/article[{}]/p/a/text()"
+          ]
         }
       ]
     }
