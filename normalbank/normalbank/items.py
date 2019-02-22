@@ -7,11 +7,11 @@
 
 import scrapy
 
-
 class NormalbankItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     title = scrapy.Field()
     text = scrapy.Field()
-    push_date = scrapy.Field()
     link = scrapy.Field()
+    push_date = scrapy.Field()
+

@@ -3,6 +3,7 @@ import scrapy
 from normalbank.items import NormalbankItem
 import json
 import time
+
 HEADERS_JSON = {
     "Content-Type":"application/json",
     "Referer":"https://www.fitchratings.com/site/search?content=headlines",

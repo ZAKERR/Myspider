@@ -1,10 +1,7 @@
 from lxml import etree
 import requests
 
-
-
 HEADERS = {
-    "Content-Type": "application/json",
     "Referer": "https://www.fitchratings.com/site/search?content=headlines",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
 }
@@ -32,7 +29,7 @@ def get_pool():
         if Type == PROTOCOL:
             ip = cur_ip.xpath("./span[1]//text()")[0].strip()
             src = cur_ip.xpath("./span[2]/li[contains(@class,'port')]/@class")[0].split()[1]
-            port = decrypt(src)
+            port = decrypt(src)   #解密函数
             sat_ip.append(f"{PROTOCOL}://{ip}:{port}")
     return sat_ip
 
