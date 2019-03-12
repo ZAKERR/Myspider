@@ -93,8 +93,8 @@ DATA_7 = {"data":["007044",{},{"pageSize":10,"pageIndex":0,"sortBy":"publication
 class MoodySpider(scrapy.Spider):
     name = 'moody'
     allowed_domains = ['moodys.com']
-
     def start_requests(self):
+
         #将获取的cookie自动存入
         next_url = 'https://www.moodys.com/identity/login'
         yield scrapy.FormRequest(url =next_url,formdata=LOGIN_DATA,headers=HEADERS)
@@ -106,7 +106,7 @@ class MoodySpider(scrapy.Spider):
         # yield scrapy.Request(url=next_url,headers=HEADERS,callback=self.parse_credit_outlook)
 
         next_url = 'https://www.moodys.com/services/mdc-topics?name=getResearchListByDimId'
-        yield  scrapy.Request(url = next_url,method = 'post',body = json.dumps(DATA_1),headers=HEADERS_JSON1,callback=self.parse_main)
+        yield scrapy.Request(url = next_url,method = 'post',body = json.dumps(DATA_1),headers=HEADERS_JSON1,callback=self.parse_main)
         yield scrapy.Request(url=next_url,method='post',body= json.dumps(DATA_2),headers=HEADERS_JSON2,callback=self.parse_main)
         yield scrapy.Request(url=next_url,method = 'post',body = json.dumps(DATA_3),headers=HEADERS_JSON3,callback=self.parse_main)
         yield scrapy.Request(url = next_url,method = 'post',body = json.dumps(DATA_4),headers=HEADERS_JSON4,callback=self.parse_main)

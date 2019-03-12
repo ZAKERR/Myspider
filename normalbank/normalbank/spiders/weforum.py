@@ -12,7 +12,6 @@ class WeforumSpider(scrapy.Spider):
     name = 'weforum'
     allowed_domains = ['weforum.org']
 
-
     def start_requests(self):
         next_url = 'https://www.weforum.org/agenda/archive'
         yield scrapy.Request(url = next_url,headers=HEADERS,callback=self.parse_agenda)

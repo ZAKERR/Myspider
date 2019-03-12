@@ -52,9 +52,10 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'normalbank.middlewares.NormalbankDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'normalbank.middlewares.NormalbankDownloaderMiddleware': None,
+    # 'normalbank.middlewares.ProxyMiddleWare':125
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -64,9 +65,10 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'normalbank.pipelines.NormalbankPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   # 'normalbank.pipelines.NormalbankPipeline': 300,
+    'normalbank.pipelines.Mysqlpipeline':200,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +90,9 @@ DEFAULT_REQUEST_HEADERS = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+MYSQL_HOST = 'localhost'
+MYSQL_DATABASE = 'sys_article'
+MYSQL_PORT = 3306
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = 'root123'
+MYSQL_TABLE = 'article'
